@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.wordedit.WordEditFragment"
+    >
+
+        <EditText
+            android:id="@+id/word_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/word"
+            app:layout_constraintBottom_toTopOf="@+id/word_meaning_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_marginRight="@dimen/elements_base_margin"
+            android:layout_marginLeft="@dimen/elements_base_margin"/>
+
+        <EditText
+            android:id="@+id/word_meaning_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="0.85"
+
+            android:hint="@string/word_meaning"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/search_meaning_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/word_edit_text"
+
+            android:layout_marginLeft="@dimen/elements_base_margin"/>
+
+        <ImageButton
+            android:id="@+id/search_meaning_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="0.15"
+            app:layout_constraintStart_toEndOf="@+id/word_meaning_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/word_edit_text"
+            android:layout_marginRight="@dimen/elements_base_margin"
+           />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="0.4"
+            android:background="@android:color/darker_gray"
+            android:cropToPadding="true"
+            android:scaleType="centerInside"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/word_meaning_edit_text"
+            app:srcCompat="@android:drawable/ic_menu_gallery"
+            android:layout_margin="@dimen/elements_base_margin"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

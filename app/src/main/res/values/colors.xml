@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="dark_theme_background">#121212</color>
+    <!-- first palette -->
+    <!-- <color name=""></color> -->
+    <color name="green">#253532</color>
+    <color name="blue">#517f83</color>
+    <color name="beige">#9e8d77</color>
+    <color name="brown">#583d34</color>
+    <color name="dark_brown">#1f1b17</color>
+
+    <!-- second palette -->
+    <!-- <color name="dark_red">#612a11</color> -->
+    <!-- <color name="pink">#b4786b</color> -->
+    <!-- <color name="grey">#5f6468</color> -->
+    <!-- <color name="blue">#2d424a</color> -->
+    <!-- <color name="dark_blue">#131917</color> -->
+
+
+</resources>
