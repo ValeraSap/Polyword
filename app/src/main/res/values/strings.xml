@@ -17,6 +17,7 @@
     <string name="new_folder">New folder</string>
     <string name="general_folder">All words</string>
     <string name="search">Search</string>
+    <string name="delete">Delete</string>
 
     <string name="learn_system">Learn system</string>
     <string name="show_ans">Show answer</string>

@@ -11,6 +11,11 @@
             android:id="@+id/word_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:hint="@string/word"
+            android:layout_marginStart="4dp"
+            android:padding="12dp"
+            />
 
     </LinearLayout>
