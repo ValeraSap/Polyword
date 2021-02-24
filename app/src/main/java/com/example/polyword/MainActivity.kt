@@ -1,22 +1,18 @@
 package com.example.polyword
 
 import android.os.Bundle
-import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.polyword.model.Word
 import com.example.polyword.ui.wordedit.WordEditFragment
-import com.example.polyword.ui.wordedit.WordEditFragmentArgs
 import com.example.polyword.ui.wordslist.WordListFragment
 import com.example.polyword.ui.wordslist.WordListFragmentDirections
-import com.google.android.material.navigation.NavigationView
 import java.util.*
 
 class MainActivity: AppCompatActivity(),
@@ -28,9 +24,14 @@ WordEditFragment.Callbacks, WordListFragment.Callbacks{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fragment)
-
+        setContentView(R.layout.activity_main)
         mNavController = Navigation.findNavController(this,R.id.fragment_host)
+
+        val drawer=findViewById<DrawerLayout>(R.id.drawer_layout)                                                                   //справка по toolbar https://temofeev.ru/info/articles/navigatsiya-dlya-android-s-ispolzovaniem-navigation-architecture-component-poshagovoe-rukovodstvo/
+        val appBarConfiguration = AppBarConfiguration(mNavController.graph, drawer)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        toolbar.setupWithNavController(mNavController,appBarConfiguration)
 
     }
 

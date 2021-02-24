@@ -8,9 +8,12 @@ import android.view.*
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
+import androidx.navigation.ui.AppBarConfiguration
 import com.example.polyword.R
 import com.example.polyword.model.Word
 import java.util.*
@@ -44,7 +47,7 @@ class WordEditFragment : Fragment(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        mWord= Word()
+         mWord= Word()
         val wordId=WordEditFragmentArgs.fromBundle(requireArguments()).wordId
        // val wordId=arguments?.get(ARG_WORD_ID) as UUID
         mWordEditViewModel.loadWord(wordId)

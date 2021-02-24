@@ -60,16 +60,16 @@ class WordListFragment : Fragment() {
 
         val view= inflater.inflate(R.layout.fragment_word_list,container,false)
 
-        val toolbar: Toolbar = view.findViewById(R.id.toolbar)
-        val activ=activity as AppCompatActivity
-        activ.setSupportActionBar(toolbar)
+        //val toolbar: Toolbar = view.findViewById(R.id.toolbar)
+        //val activ=activity as AppCompatActivity
+        //activ.setSupportActionBar(toolbar)
 
         /***
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         //Это соотношение элементов выдвижного меню с фрагентами
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        appBarConfiguration = AppBarConfiguration(setOf(
+        (setOf(
         R.id.nav_word_list, R.id.nav_edit), drawerLayout)
         //сама кнопка-гамбургер
         setupActionBarWithNavController(navController, appBarConfiguration)
