@@ -1,9 +1,12 @@
 package com.example.polyword.ui.wordslist
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
@@ -21,6 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import java.util.*
 
 class WordListFragment : Fragment() {
@@ -35,7 +39,7 @@ class WordListFragment : Fragment() {
 
     private lateinit var mWordRecyclerView: RecyclerView
     private var mAdapter: WordAdapter? = WordAdapter(emptyList())
-
+   
     private val mWordListViewModel: WordListViewModel by lazy {
         ViewModelProvider(this).get(WordListViewModel::class.java)
     }
@@ -60,27 +64,6 @@ class WordListFragment : Fragment() {
 
         val view= inflater.inflate(R.layout.fragment_word_list,container,false)
 
-        //val toolbar: Toolbar = view.findViewById(R.id.toolbar)
-        //val activ=activity as AppCompatActivity
-        //activ.setSupportActionBar(toolbar)
-
-        /***
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        //Это соотношение элементов выдвижного меню с фрагентами
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        (setOf(
-        R.id.nav_word_list, R.id.nav_edit), drawerLayout)
-        //сама кнопка-гамбургер
-        setupActionBarWithNavController(navController, appBarConfiguration)
-         **/
-
-       /* val navView: NavigationView = view.findViewById(R.id.nav_view)
-        val navController = activity?.findNavController(R.id.nav_host_fragment)
-        if (navController != null) {
-            navView.setupWithNavController(navController)
-        }*/
-
         mWordRecyclerView=view.findViewById(R.id.word_recycler_view) as RecyclerView
         mWordRecyclerView.apply {
             layoutManager= LinearLayoutManager(context)
@@ -88,9 +71,35 @@ class WordListFragment : Fragment() {
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
 
+         val mSwipeHelper=object: SwipeHelper(
+                context,
+                mWordRecyclerView,
+                150
+        ) {
+             override fun instantiateMyButton(viewHolder: RecyclerView.ViewHolder?,
+                                              buffer: MutableList<Any?>?) {
+                 buffer?.add(
+                         MyButton(context,
+                                 R.drawable.ic_archive,
+                                 Color.TRANSPARENT
+                         ) { pos ->
+                             mAdapter?.archiveElem(pos)
+                              })
+                 buffer?.add(
+                         MyButton(context,
+                                 R.drawable.ic_delete,
+                                 Color.TRANSPARENT
+                         ) { pos ->
+
+                            mAdapter?.deleteElem(pos)
+                         })
+             }
+         }
+        val itemTouchHelper = ItemTouchHelper(mSwipeHelper)
+        itemTouchHelper.attachToRecyclerView(mWordRecyclerView)
+
         mAddButton =view.findViewById(R.id.add_word_button)
         mListEmptyTextView=view.findViewById(R.id.empty_list_textview)
-
 
         return view
     }
@@ -107,11 +116,7 @@ class WordListFragment : Fragment() {
             //todo OnClickListener
         }
     }
-    /* //обрабатывает нажатие на кнопку-гамбургер
-   override fun onSupportNavigateUp(): Boolean {
-       val navController = findNavController(R.id.nav_host_fragment)
-       return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-   }*/
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -121,7 +126,6 @@ class WordListFragment : Fragment() {
                     words?.let {
                         updateUI(words)
                     }
-
                 }
         )
     }
@@ -154,12 +158,6 @@ class WordListFragment : Fragment() {
         mCallbacks = null
     }
 
-
-    companion object{
-        fun newInstance(wordID: UUID): WordEditFragment {
-            return WordEditFragment()
-        }
-    }
 
     private inner class WordHolder(view: View) :
         RecyclerView.ViewHolder(view), View.OnClickListener {
@@ -197,6 +195,14 @@ class WordListFragment : Fragment() {
         override fun getItemCount(): Int {
             return words.size
         }
+
+        fun deleteElem(position: Int) {
+            mWordListViewModel.deleteWord(words[position])
+        }
+        fun archiveElem(position: Int) {
+            Toast.makeText(context,"archived",Toast.LENGTH_SHORT).show()
+        }
+
 
     }
 }

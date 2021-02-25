@@ -12,4 +12,7 @@ class WordListViewModel: ViewModel() {
     fun addWord(word: Word) {
         mWordRepository.addWord(word)
     }
+    fun deleteWord(word: Word) {
+        mWordRepository.deleteWord(word)
+    }
 }
