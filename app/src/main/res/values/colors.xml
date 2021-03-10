@@ -11,6 +11,7 @@
     <color name="beige">#9e8d77</color>
     <color name="brown">#583d34</color>
     <color name="dark_brown">#1f1b17</color>
+    <color name="transparent">#00000000</color>
 
     <!-- second palette -->
     <!-- <color name="dark_red">#612a11</color> -->

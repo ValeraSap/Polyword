@@ -23,6 +23,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="end|bottom"
-        android:background="@drawable/ic_sun" />
+        android:background="@color/transparent"
+        />
 
 </LinearLayout>

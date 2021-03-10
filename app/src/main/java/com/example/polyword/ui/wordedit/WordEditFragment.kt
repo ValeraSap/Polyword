@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.*
 import android.widget.EditText
 import android.widget.ImageButton
@@ -115,7 +116,7 @@ class WordEditFragment : Fragment(){
         mSpellingEditText.addTextChangedListener(spellingTextWatcher)
         mMeaningEditText.addTextChangedListener(meaningTextWatcher)
         mSearchMeaningButton.setOnClickListener {
-            Toast.makeText(activity,"Clicked", Toast.LENGTH_SHORT).show()
+            mMeaningEditText.setText(mWordEditViewModel.searchMeaning(mWord.spelling))
         }
     }
 

@@ -20,9 +20,9 @@
     <string name="delete">Delete</string>
 
     <string name="learn_system">Learn system</string>
-    <string name="show_ans">Show answer</string>
+    <string name="show_ans">Show meaning</string>
     <string name="bad_learned">Again</string>
-    <string name="middle_learned">XXX</string>
+    <string name="middle_learned" translatable="false">XXX</string>
     <string name="good_learned">Good</string>
 
     <!-- TalkBack -->

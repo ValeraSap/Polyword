@@ -15,12 +15,12 @@ interface WordDao {
     fun getWord(id: UUID):LiveData<Word?>
 
     @Update
-    fun updateWord(crime: Word)
+    fun updateWord(word: Word)
 
     @Insert
-    fun addWord(crime: Word)
+    fun addWord(word: Word)
 
     @Delete
-    fun deleteWord(crime: Word)
+    fun deleteWord(word: Word)
 
 }

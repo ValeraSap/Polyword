@@ -9,6 +9,7 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+
     defaultConfig {
         applicationId "com.example.polyword"
         minSdkVersion 21
@@ -39,8 +40,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
 
-    implementation 'androidx.room:room-runtime:2.3.0-beta01'
-    kapt 'androidx.room:room-compiler:2.3.0-beta01'
+    implementation 'androidx.room:room-runtime:2.3.0-beta02'
+    kapt 'androidx.room:room-compiler:2.3.0-beta02'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
 
