@@ -1,4 +1,4 @@
-package com.example.polyword
+package com.example.polyword.ui
 
 
 import android.content.res.Configuration
@@ -13,7 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import androidx.sqlite.db.SupportSQLiteOpenHelper
+import com.example.polyword.R
 import com.example.polyword.model.Word
 import com.example.polyword.ui.wordedit.WordEditFragment
 import com.example.polyword.ui.wordslist.WordListFragment

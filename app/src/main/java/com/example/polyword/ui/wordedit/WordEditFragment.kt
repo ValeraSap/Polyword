@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
 import com.example.polyword.R
 import com.example.polyword.model.Word
-import com.example.polyword.ui.wordslist.SwipeController
 
 
 private const val ARG_WORD_ID="word_id"

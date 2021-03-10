@@ -1,4 +1,4 @@
-package com.example.polyword
+package com.example.polyword.repositories
 
 import android.content.Context
 import android.database.Cursor
@@ -13,10 +13,9 @@ class WordbookRepository private constructor(context: Context) {
 
     fun getWordMean(spell: String): String? {
 
-
         val cursor: Cursor = wordbookDb.rawQuery(
                 "SELECT mean from words where spell = ?",
-                arrayOf(spell))
+                arrayOf(spell.toUpperCase()))
         return cursor.use { cursor ->
             if (cursor.count>0) {
                 cursor.moveToFirst()

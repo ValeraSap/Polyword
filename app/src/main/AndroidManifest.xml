@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Polyword">
         <activity
-            android:name=".MainActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".ui.MainActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:theme="@style/Theme.Polyword.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

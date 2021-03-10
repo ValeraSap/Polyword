@@ -7,4 +7,5 @@ import java.util.*
 @Entity
 data class Word(@PrimaryKey val id: UUID = UUID.randomUUID(),
                 var spelling: String = "",
-                var meaning: String = "")
+                var meaning: String = "",
+                var imageUrl: String = "")

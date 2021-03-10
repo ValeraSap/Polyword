@@ -8,7 +8,7 @@ import java.io.File
 import java.io.FileOutputStream
 
 class DbHelper(val context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
-
+//https://medium.com/@johann.pardanaud/ship-an-android-app-with-a-pre-populated-database-cd2b3aa3311f
     private val preferences: SharedPreferences = context.getSharedPreferences(
             "${context.packageName}.database_versions",
             Context.MODE_PRIVATE

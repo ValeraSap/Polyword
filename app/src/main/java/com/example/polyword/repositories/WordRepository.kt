@@ -1,4 +1,4 @@
-package com.example.polyword
+package com.example.polyword.repositories
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -10,8 +10,9 @@ import java.util.*
 import java.util.concurrent.Executors
 
 
-private const val DATABASE_NAME = "word-database"
+
 class WordRepository private constructor(context: Context){
+
 
     private val database : WordDatabase = Room.databaseBuilder(
         context.applicationContext,
@@ -20,35 +21,37 @@ class WordRepository private constructor(context: Context){
     ).build()
 
     private val wordDao = database.wordDao()
-    private val executor = Executors.newSingleThreadExecutor()  //для выполнения запросов к бд без торможения
+   // private val executor = Executors.newSingleThreadExecutor()  //для выполнения запросов к бд без торможения
     //private val filesDir = context.applicationContext.filesDir //файловая директория
 
 
     fun getWords(): LiveData<List<Word>> = wordDao.getWords()
     fun getWord(id: UUID): LiveData<Word?> = wordDao.getWord(id)
     fun updateWord(word: Word){
-        executor.execute {
+      /*  executor.execute {
             wordDao.updateWord(word)
-        }
+        }*/
     }
     fun deleteWord(word: Word){
-        executor.execute {
+       /* executor.execute {
             wordDao.deleteWord(word)
-        }
+        }*/
     }
     fun addWord(word: Word){
-        executor.execute {
+       /* executor.execute {
             wordDao.addWord(word)
-        }
+        }*/
     }
 
 
     companion object {
+        const val DATABASE_NAME = "word-database"
+
         private var INSTANCE: WordRepository? = null
 
         fun initialize(context: Context) {
-            if(INSTANCE==null) {
-                INSTANCE= WordRepository(context)
+            if(INSTANCE ==null) {
+                INSTANCE = WordRepository(context)
             }
         }
         fun get(): WordRepository {

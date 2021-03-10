@@ -4,14 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.example.polyword.WordRepository
-import com.example.polyword.WordbookRepository
+import com.example.polyword.repositories.WordRepository
 import com.example.polyword.model.Word
+import com.example.polyword.repositories.WordbookRepository
 import java.util.*
 
 class WordEditViewModel : ViewModel(){
-
-    //private val mWorkbookXMLAccesser= WorkbookXMLAccesser.get()
 
     private val mWordRepository = WordRepository.get()
     private val mWordbookRepository = WordbookRepository.get()
@@ -20,6 +18,10 @@ class WordEditViewModel : ViewModel(){
             Transformations.switchMap(mWordIdLiveData){ wordId ->
                 mWordRepository.getWord(wordId)
             }
+    /*val mWordbookLiveData: LiveData<String?> =
+        Transformations.switchMap(mWordIdLiveData){ wordId ->
+            mWordbookRepository.getWordMean(mWordLiveData?.value.spelling)
+    }*/
 
     fun loadWord(wordId: UUID) {
         mWordIdLiveData.value=wordId
@@ -31,10 +33,8 @@ class WordEditViewModel : ViewModel(){
         mWordRepository.deleteWord(word)
     }
 
-    fun searchMeaning(spell: String): String {
-        //return mWorkbookXMLAccessor.searchMeaning(spell)
+    fun searchMeaning(spell: String): String { //todo use livedata and observers
         return mWordbookRepository.getWordMean(spell) ?: "not found"
-        //myDatabase.rawQuery("SELECT * FROM my_awesome_table")
     }
 
 }
